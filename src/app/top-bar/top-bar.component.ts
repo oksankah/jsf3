@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent {
+  constructor(public authService: AuthService, private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  logout(): void {
+    this.authService.logout();
   }
 
+  navigateTo(path: string): void {
+    this.router.navigate([path]);
+  }
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
